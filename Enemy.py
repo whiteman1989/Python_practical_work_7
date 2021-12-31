@@ -11,6 +11,7 @@ class Enemy(object):
         self.walk_count = 0
         self.vel = 3
         self.hitbox = (self.x + 20, self.y, 28, 60)
+        self.hit_count = 0
 
     walk_right = [pygame.image.load('sprites/enemy/R1E.png'),
     pygame.image.load('sprites/enemy/R2E.png'),
@@ -67,4 +68,5 @@ class Enemy(object):
                 self.walk_count = 0
 
     def hit(self):
-        print('Hit')
+        self.hit_count += 1
+        print('Hit', self.hit_count)
