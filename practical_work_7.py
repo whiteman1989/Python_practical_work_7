@@ -43,7 +43,9 @@ anim_count = 0
 hitbox = (x+20, y, 28, 60)
 last_direction = Side.RIGHT
 
-goblin = Enemy(100, 436, 64, 64, 400)
+shoot_loop = 0
+
+goblin = Enemy(100, 436, 64, 5, 495)
 
 def draw_window():
     global anim_count
@@ -62,7 +64,7 @@ def draw_window():
     for projectile in projectiles:
         projectile.draw(win)
     goblin.draw(win)
-    hitbox = (x+10, y, 40, 80)
+    hitbox = (x+10, y, 28, 60)
     pygame.draw.rect(win, (255, 0, 0), hitbox, 2)
 
     pygame.display.update()
@@ -73,6 +75,10 @@ projectiles = []
 
 while run:
     clock.tick(30)
+    if shoot_loop > 0:
+        shoot_loop += 1
+    if shoot_loop > 3:
+        shoot_loop = 0
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -87,13 +93,14 @@ while run:
         else:
             projectiles.pop(projectiles.index(projectile))
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_f]:
+    if keys[pygame.K_f] and shoot_loop == 0:
         if last_direction == Side.RIGHT:
             facing = 1
         else:
             facing = -1
         if len(projectiles) < 5:
             projectiles.append(Projectile(round(x + width // 2), round(y + height // 2), 3, (255, 0, 0), facing))
+        shoot_loop = 1
     if keys[pygame.K_LEFT] and x > 5:
         x-= speed
         left = True
