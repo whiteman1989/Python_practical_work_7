@@ -4,3 +4,4 @@
 
 ## Рузультати виконання програми
 ![7-1 result](https://github.com/whiteman1989/Python_practical_work_7/blob/master/images/work_res_7-1.jpg?raw=true)
+![7-2 result](https://github.com/whiteman1989/Python_practical_work_7/blob/master/images/work_res_7-2.jpg?raw=true)

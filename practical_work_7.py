@@ -45,7 +45,7 @@ last_direction = Side.RIGHT
 
 shoot_loop = 0
 
-goblin = Enemy(100, 436, 64, 5, 495)
+goblin = Enemy(5, 436, 64, 64, 495)
 
 def draw_window():
     global anim_count
